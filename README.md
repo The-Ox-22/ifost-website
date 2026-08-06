@@ -18,6 +18,12 @@ To recreate this project with the same configuration:
 npx sv@0.17.0 create --template minimal --types ts --add prettier eslint tailwindcss="plugins:typography,forms" sveltekit-adapter="adapter:node" --install npm .
 ```
 
+## Environment variables
+
+Copy `.env.example` to `.env` and fill in anything you need to override. Notably:
+
+- `GAS_TRACKER_URL` — base URL for the gas-tracker service backing `/gas-tracker`. Defaults to its in-cluster ClusterIP DNS name; for local dev, run `kubectl port-forward svc/gas-tracker 8080:80 -n gas-tracker` and set this to `http://localhost:8080`.
+
 ## Developing
 
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:

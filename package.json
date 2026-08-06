@@ -1,7 +1,7 @@
 {
 	"name": "ifost-website",
 	"private": true,
-	"version": "0.0.1",
+	"version": "0.2.0",
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
@@ -37,6 +37,7 @@
 		"vite": "^8.0.16"
 	},
 	"dependencies": {
-		"@auth/sveltekit": "^1.11.3"
+		"@auth/sveltekit": "^1.11.3",
+		"layerchart": "^2.1.0"
 	}
 }
