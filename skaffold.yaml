@@ -29,6 +29,6 @@ profiles:
     build:
       tagPolicy:
         envTemplate:
-          template: "v0.2.0"
+          template: "v0.3.0"
       local:
         push: true

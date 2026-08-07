@@ -15,14 +15,14 @@
 	);
 </script>
 
-<div class="rounded-lg border border-zinc-800 p-6">
-	<p class="mb-1 font-mono text-xs tracking-widest text-amber-400 uppercase">18-month forecast</p>
+<div class="panel p-6">
+	<p class="mb-1 font-mono text-xs tracking-widest text-amber uppercase">18-month forecast</p>
 
 	{#if forecast?.data}
-		<p class="mb-4 text-sm text-zinc-500">
+		<p class="mb-4 font-mono text-sm text-ink-muted">
 			EIA Short-Term Energy Outlook · {forecast.data.forecast.region_label}
 		</p>
-		<div class="h-56 text-zinc-500" style="--color-primary: var(--color-amber-400);">
+		<div class="h-56 text-ink-muted" style="--color-primary: var(--color-cyan);">
 			<LineChart
 				data={chartData}
 				x="label"
@@ -35,7 +35,7 @@
 			/>
 		</div>
 	{:else}
-		<p class="text-sm text-zinc-600">
+		<p class="text-sm text-ink-muted">
 			Forecast temporarily unavailable{forecast?.error ? ` (${forecast.error})` : ''}.
 		</p>
 	{/if}

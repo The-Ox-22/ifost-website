@@ -50,13 +50,13 @@
 <div class="mx-auto max-w-5xl px-6 py-16">
 	<header class="mb-10 flex items-baseline justify-between">
 		<div>
-			<p class="mb-2 font-mono text-xs tracking-widest text-amber-400 uppercase">Tools</p>
-			<h1 class="text-2xl font-semibold text-zinc-100">Gas Tracker</h1>
+			<p class="mb-2 font-mono text-xs tracking-widest text-amber uppercase">Tools</p>
+			<h1 class="font-display text-2xl font-semibold text-ink">Gas Tracker</h1>
 		</div>
 		{#if data.zip}
 			<button
 				onclick={changeZip}
-				class="text-sm text-zinc-500 transition-colors hover:text-zinc-300"
+				class="font-mono text-sm text-ink-muted transition-colors hover:text-cyan"
 			>
 				Change zip ({data.zip})
 			</button>

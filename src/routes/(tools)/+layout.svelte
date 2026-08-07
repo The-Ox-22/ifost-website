@@ -4,6 +4,6 @@
 </script>
 
 <Nav />
-<main class="pt-14 min-h-screen bg-zinc-950">
+<main class="min-h-screen bg-panel-black pt-16">
 	{@render children()}
 </main>

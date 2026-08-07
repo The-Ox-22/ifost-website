@@ -12,7 +12,10 @@ function getCurrentPosition(): Promise<GeolocationPosition> {
 			reject(new Error('geolocation unsupported'));
 			return;
 		}
-		navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 10_000 });
+		navigator.geolocation.getCurrentPosition(resolve, reject, {
+			timeout: 10_000,
+			enableHighAccuracy: true
+		});
 	});
 }
 

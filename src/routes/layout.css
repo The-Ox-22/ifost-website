@@ -1,10 +1,89 @@
+/* Self-hosted (no external font CDN calls at runtime). */
+@import '@fontsource-variable/instrument-sans';
+@import '@fontsource-variable/manrope';
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/500.css';
+@import '@fontsource/ibm-plex-mono/600.css';
+
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
 
+/*
+  Instrument-panel palette. The site is dark-only (no light mode), styled
+  like systems/avionics equipment: graphite housings, amber caution lamps,
+  cyan advisory readouts, phosphor-green "nominal" status - the same
+  caution/advisory/nominal coding the gas-tracker verdict badges use.
+*/
+@theme {
+	--color-panel-black: #0b0d0f;
+	--color-panel-surface: #14181c;
+	--color-bezel: #262b30;
+	--color-ink: #edeff1;
+	--color-ink-muted: #8b939b;
+	--color-amber: #f2a93b;
+	--color-cyan: #4fd8ce;
+	--color-nominal: #5fcb7a;
+
+	--font-display: 'Instrument Sans Variable', ui-sans-serif, system-ui, sans-serif;
+	--font-sans: 'Manrope Variable', ui-sans-serif, system-ui, sans-serif;
+	--font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', monospace;
+}
+
+body {
+	font-family: var(--font-sans);
+}
+
+/* Faint oscilloscope-grid backdrop, tinted from the bezel color rather than
+   flat white so it reads as etched panel texture, not a generic dot-grid. */
 .grid-bg {
 	background-image:
-		linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-		linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+		linear-gradient(color-mix(in oklab, var(--color-bezel) 60%, transparent) 1px, transparent 1px),
+		linear-gradient(
+			90deg,
+			color-mix(in oklab, var(--color-bezel) 60%, transparent) 1px,
+			transparent 1px
+		);
 	background-size: 48px 48px;
+}
+
+/*
+  Shared "panel" treatment: bezel border, a faint top sheen (like light
+  catching a metal housing), and four corner rivets - drawn entirely with
+  layered backgrounds so it works on any element without extra markup.
+*/
+@utility panel {
+	position: relative;
+	background-color: var(--color-panel-surface);
+	border: 1px solid var(--color-bezel);
+	border-radius: 0.5rem;
+	background-image:
+		linear-gradient(to bottom, color-mix(in oklab, white 3%, transparent), transparent 45%),
+		radial-gradient(circle, var(--color-bezel) 0 1.4px, transparent 1.6px),
+		radial-gradient(circle, var(--color-bezel) 0 1.4px, transparent 1.6px),
+		radial-gradient(circle, var(--color-bezel) 0 1.4px, transparent 1.6px),
+		radial-gradient(circle, var(--color-bezel) 0 1.4px, transparent 1.6px);
+	background-repeat: no-repeat;
+	background-size:
+		100% 100%,
+		6px 6px,
+		6px 6px,
+		6px 6px,
+		6px 6px;
+	background-position:
+		0 0,
+		9px 9px,
+		calc(100% - 9px) 9px,
+		9px calc(100% - 9px),
+		calc(100% - 9px) calc(100% - 9px);
+}
+
+/* LayerChart theming: no framework preset (shadcn/skeleton/daisyUI) is
+   imported, so its "surface" vars are unset by default and components
+   (tooltips, etc.) render near-invisible on a dark background. Point them
+   at our palette here instead of per-chart, since every chart shares it. */
+:root {
+	--color-surface-100: var(--color-panel-surface);
+	--color-surface-300: var(--color-panel-surface);
+	--color-surface-content: var(--color-ink);
 }

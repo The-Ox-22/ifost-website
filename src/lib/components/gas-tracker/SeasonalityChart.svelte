@@ -21,19 +21,17 @@
 	});
 </script>
 
-<div class="rounded-lg border border-zinc-800 p-6">
-	<p class="mb-1 font-mono text-xs tracking-widest text-amber-400 uppercase">Seasonal pattern</p>
+<div class="panel p-6">
+	<p class="mb-1 font-mono text-xs tracking-widest text-amber uppercase">Seasonal pattern</p>
 
 	{#if seasonality?.data}
 		{@const s = seasonality.data.seasonality}
-		<p class="mb-4 text-sm text-zinc-500">
+		<p class="mb-4 font-mono text-sm text-ink-muted">
 			Currently
-			<span class={normDelta >= 0 ? 'text-amber-400' : 'text-emerald-400'}
-				>{formatPercent(normDelta)}</span
-			>
+			<span class={normDelta >= 0 ? 'text-amber' : 'text-nominal'}>{formatPercent(normDelta)}</span>
 			vs. the {formatMonth(s.current_month)} norm ({formatPrice(s.seasonal_norm)})
 		</p>
-		<div class="h-56 text-zinc-500" style="--color-primary: var(--color-amber-400);">
+		<div class="h-56 text-ink-muted" style="--color-primary: var(--color-amber);">
 			<BarChart
 				data={chartData}
 				x="label"
@@ -43,7 +41,7 @@
 			/>
 		</div>
 	{:else}
-		<p class="text-sm text-zinc-600">
+		<p class="text-sm text-ink-muted">
 			Seasonality data temporarily unavailable{seasonality?.error ? ` (${seasonality.error})` : ''}.
 		</p>
 	{/if}
