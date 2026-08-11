@@ -69,12 +69,28 @@ export interface ResolvedLocation {
 	resolved_name?: string;
 }
 
+/** General conditions favorability, independent of bait choice. */
+export type FishingQuality = 'poor' | 'fair' | 'good' | 'excellent';
+
+export interface OutlookWindow {
+	label: string;
+	start: string;
+	end: string;
+	quality: FishingQuality;
+}
+
+export interface FishingOutlook {
+	now?: FishingQuality;
+	next_48h: OutlookWindow[];
+}
+
 export interface SuggestResponse {
 	location: ResolvedLocation;
 	resolved_conditions: ResolvedConditions;
 	season_phase?: SeasonPhase;
 	suggestions: Suggestion[];
 	target_structure: StructureSuggestion[];
+	fishing_outlook: FishingOutlook;
 }
 
 export type Fetched<T> = { data: T; error?: undefined } | { data?: undefined; error: string };

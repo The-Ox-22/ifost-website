@@ -9,6 +9,7 @@
 	} from '$lib/fishcastLocation';
 	import LocationPicker from '$lib/components/fishcast/LocationPicker.svelte';
 	import ConditionsPanel from '$lib/components/fishcast/ConditionsPanel.svelte';
+	import OutlookPanel from '$lib/components/fishcast/OutlookPanel.svelte';
 	import SuggestionsList from '$lib/components/fishcast/SuggestionsList.svelte';
 	import StructureList from '$lib/components/fishcast/StructureList.svelte';
 	import type { PageData } from './$types';
@@ -90,6 +91,7 @@
 				{s.location.resolved_name ?? `${s.location.lat.toFixed(2)}, ${s.location.lon.toFixed(2)}`}
 			</p>
 			<ConditionsPanel conditions={s.resolved_conditions} seasonPhase={s.season_phase} />
+			<OutlookPanel outlook={s.fishing_outlook} />
 			<SuggestionsList suggestions={s.suggestions} />
 			<StructureList structure={s.target_structure} />
 		</div>
