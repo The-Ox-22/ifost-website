@@ -199,7 +199,34 @@
 					Regional prices, forecast, and seasonal trends by zip code.
 				</p>
 			</a>
-			{#each [1, 2] as slot (slot)}
+			<a
+				href="/fishcast"
+				class="group panel flex flex-col gap-3 p-6 transition-colors hover:border-amber/50"
+			>
+				<div class="flex items-center justify-between">
+					<div
+						class="flex h-8 w-8 items-center justify-center rounded bg-amber/10 text-sm text-amber"
+					>
+						🎣
+					</div>
+					<span
+						class="flex items-center gap-1.5 font-mono text-[10px] tracking-widest text-nominal"
+					>
+						<span class="relative flex h-1.5 w-1.5">
+							<span
+								class="absolute inline-flex h-full w-full animate-ping rounded-full bg-nominal opacity-75"
+							></span>
+							<span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-nominal"></span>
+						</span>
+						LIVE
+					</span>
+				</div>
+				<p class="font-display text-sm font-medium text-ink">Fishcast</p>
+				<p class="text-xs text-ink-muted">
+					Largemouth bass bait and technique suggestions from live conditions.
+				</p>
+			</a>
+			{#each [1] as slot (slot)}
 				<div class="panel flex flex-col gap-3 border-dashed p-6 opacity-60">
 					<div class="flex items-center justify-between">
 						<div class="h-8 w-8 rounded bg-bezel"></div>
@@ -216,6 +243,6 @@
 <footer class="border-t border-bezel bg-panel-black py-8">
 	<div class="mx-auto flex max-w-5xl items-center justify-between px-6">
 		<span class="font-mono text-sm text-ink-muted">ifost.dev</span>
-		<span class="font-mono text-xs text-ink-muted/60">Tulsa, OK · BUILD v0.2.0</span>
+		<span class="font-mono text-xs text-ink-muted/60">Tulsa, OK · BUILD v0.4.0</span>
 	</div>
 </footer>

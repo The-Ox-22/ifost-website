@@ -6,7 +6,7 @@
 const REVERSE_GEOCODE_URL = 'https://api.bigdatacloud.net/data/reverse-geocode-client';
 const STORAGE_KEY = 'gas-tracker:zip';
 
-function getCurrentPosition(): Promise<GeolocationPosition> {
+export function getCurrentPosition(): Promise<GeolocationPosition> {
 	return new Promise((resolve, reject) => {
 		if (!navigator.geolocation) {
 			reject(new Error('geolocation unsupported'));

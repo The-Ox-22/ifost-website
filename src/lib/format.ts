@@ -38,3 +38,9 @@ export function formatPeriod(period: string): string {
 	const monthNum = Number(month);
 	return Number.isFinite(monthNum) ? `${formatMonth(monthNum)} ${year}` : period;
 }
+
+/** Converts a snake_case API value like "cold_front_recent" into "Cold front recent". */
+export function humanize(value: string): string {
+	const spaced = value.replaceAll('_', ' ');
+	return spaced.charAt(0).toUpperCase() + spaced.slice(1);
+}
